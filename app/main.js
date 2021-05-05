@@ -643,7 +643,20 @@ function startMicrobreak () {
   }
   updateTray()
 }
-
+//only lock screen on darwin
+function startLockscreen() {
+  const os = require('os')
+  if (os.platform() === 'darwin') {
+    const spawnSync = require('child_process').spawnSync
+    spawnSync('/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession', ['-suspend'], {
+      detached: true,
+      stdio: 'ignore',
+      shell: false,
+    })
+    //CGSession takes several seconds to lock the screen,wait it locks the screen and then close the window.
+    spawnSync('sleep', ['5'])
+  }
+}
 function startBreak () {
   if (!breakIdeas) {
     loadIdeas()
@@ -780,6 +793,7 @@ function startBreak () {
 }
 
 function breakComplete (shouldPlaySound, windows) {
+  startLockscreen()
   if (globalShortcut.isRegistered(settings.get('endBreakShortcut'))) {
     globalShortcut.unregister(settings.get('endBreakShortcut'))
   }
