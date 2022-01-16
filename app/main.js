@@ -700,7 +700,7 @@ function startBreak() {
             globalShortcut.register(settings.get('endBreakShortcut'), () => {
                 const passedPercent = (Date.now() - startTime) / breakDuration * 100
                 if (Utils.canPostpone(postponable, passedPercent, postponableDurationPercent)) {
-                    postponeBreak(true)
+                    postponeBreak(true,false)
                 } else if (Utils.canSkip(strictMode, postponable, passedPercent, postponableDurationPercent)) {
                     finishBreak(false)
                 }
@@ -829,14 +829,14 @@ function startBreak() {
     updateTray()
 }
 
-function breakComplete(shouldLock, windows) {
-    if (shouldLock) {
+function breakComplete(shouldPlaySound, windows,doNotLock=false ) {
+    if (!doNotLock) {
         startLockscreen()
     }
     if (globalShortcut.isRegistered(settings.get('endBreakShortcut'))) {
         globalShortcut.unregister(settings.get('endBreakShortcut'))
     }
-    if (shouldLock && !settings.get('silentNotifications')) {
+    if (shouldPlaySound && !settings.get('silentNotifications')) {
         processWin.webContents.send('playSound', settings.get('audio'), settings.get('volume'))
     }
     if (process.platform === 'darwin') {
@@ -867,8 +867,8 @@ function postponeMicrobreak(shouldPlaySound = false) {
     updateTray()
 }
 
-function postponeBreak(shouldLock = true) {
-    breakWins = breakComplete(shouldLock, breakWins)
+function postponeBreak(shouldPlaySound, dontLock = false) {
+    breakWins = breakComplete(shouldPlaySound, breakWins,dontLock)
     breakPlanner.postponeCurrentBreak()
     log.info('Stretchly: postponing Long Break')
     updateTray()
@@ -1238,10 +1238,10 @@ ipcMain.on('postpone-microbreak', function (event, shouldPlaySound) {
 })
 
 ipcMain.on('postpone-break', function (event, shouldPlaySound) {
-    postponeBreak(true)
+    postponeBreak(shouldPlaySound,false)
 })
 ipcMain.on('postpone-withoutpassword', function (event, shouldPlaySound) {
-    postponeBreak(false)
+    postponeBreak(shouldPlaySound,true)
 })
 
 ipcMain.on('finish-microbreak', function (event, shouldPlaySound) {
