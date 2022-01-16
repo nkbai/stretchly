@@ -81,6 +81,7 @@ app.on('before-quit', () => {
   appIsQuitting = true
 })
 
+
 function initialize (isAppStart = true) {
   // TODO maybe we should not reinitialize but handle everything when we save new values for preferences
   log.info(`Stretchly: ${isAppStart ? '' : 're'}initializing...`)
@@ -160,6 +161,11 @@ function initialize (isAppStart = true) {
   if (settings.get('pauseBreaksShortcut') !== '') {
     globalShortcut.register(settings.get('pauseBreaksShortcut'), () => {
       pauseBreaks(1)
+    })
+  }
+  if (process.platform === 'darwin') {
+    globalShortcut.register('Command+Q', () => {
+      log.info("quit pressed")
     })
   }
 }
@@ -648,13 +654,11 @@ function startLockscreen() {
   const os = require('os')
   if (os.platform() === 'darwin') {
     const spawnSync = require('child_process').spawnSync
-    spawnSync('/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession', ['-suspend'], {
+    spawnSync('lockscreen', [ ], {
       detached: true,
       stdio: 'ignore',
       shell: false,
     })
-    //CGSession takes several seconds to lock the screen,wait it locks the screen and then close the window.
-    spawnSync('sleep', ['5'])
   }
 }
 function startBreak () {
@@ -680,7 +684,7 @@ function startBreak () {
       globalShortcut.register(settings.get('endBreakShortcut'), () => {
         const passedPercent = (Date.now() - startTime) / breakDuration * 100
         if (Utils.canPostpone(postponable, passedPercent, postponableDurationPercent)) {
-          postponeBreak()
+          postponeBreak(true)
         } else if (Utils.canSkip(strictMode, postponable, passedPercent, postponableDurationPercent)) {
           finishBreak(false)
         }
@@ -777,6 +781,23 @@ function startBreak () {
         breakWinLocal = null
       })
     }
+    const  win=breakWinLocal
+    win.on('blur', () => {
+      win.hide();
+      win.setKiosk(false);
+      win.moveTop();
+      win.focus();
+      win.setKiosk(true);
+      win.show();
+      win.focus();
+    });
+    // win.setAlwaysOnTop(true, "floating");
+    win.setVisibleOnAllWorkspaces(true);
+    // win.setFullScreenable(false);
+    // win.setVisibleOnAllWorkspaces(true)
+    // win.setAlwaysOnTop(true)
+
+    breakWinLocal.setKiosk(true)
     breakWins.push(breakWinLocal)
 
     if (!settings.get('allScreens')) {
@@ -792,12 +813,14 @@ function startBreak () {
   updateTray()
 }
 
-function breakComplete (shouldPlaySound, windows) {
-  startLockscreen()
+function breakComplete (shouldLock, windows) {
+  if(shouldLock){
+    startLockscreen()
+  }
   if (globalShortcut.isRegistered(settings.get('endBreakShortcut'))) {
     globalShortcut.unregister(settings.get('endBreakShortcut'))
   }
-  if (shouldPlaySound && !settings.get('silentNotifications')) {
+  if (shouldLock && !settings.get('silentNotifications')) {
     processWin.webContents.send('playSound', settings.get('audio'), settings.get('volume'))
   }
   if (process.platform === 'darwin') {
@@ -828,8 +851,8 @@ function postponeMicrobreak (shouldPlaySound = false) {
   updateTray()
 }
 
-function postponeBreak (shouldPlaySound = false) {
-  breakWins = breakComplete(shouldPlaySound, breakWins)
+function postponeBreak (shouldLock = true) {
+  breakWins = breakComplete(shouldLock, breakWins)
   breakPlanner.postponeCurrentBreak()
   log.info('Stretchly: postponing Long Break')
   updateTray()
@@ -1181,7 +1204,10 @@ ipcMain.on('postpone-microbreak', function (event, shouldPlaySound) {
 })
 
 ipcMain.on('postpone-break', function (event, shouldPlaySound) {
-  postponeBreak()
+  postponeBreak(true)
+})
+ipcMain.on('postpone-withoutpassword',function(event,shouldPlaySound){
+  postponeBreak(false)
 })
 
 ipcMain.on('finish-microbreak', function (event, shouldPlaySound) {

@@ -20,6 +20,8 @@ window.onload = (event) => {
 
   document.querySelector('#postpone').onclick = event =>
     ipcRenderer.send('postpone-break')
+  document.querySelector("#postponewithoutpassword").onclick= event=>
+      ipcRenderer.send("postpone-withoutpassword")
 
   ipcRenderer.on('breakIdea', (event, message) => {
     const breakIdea = document.querySelector('.break-idea')
