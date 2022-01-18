@@ -29,13 +29,11 @@
 		28DEC8041CD950450012B5E3 /* HUDAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEC8031CD950450012B5E3 /* HUDAlert.swift */; };
 		28DEC8061CD954EA0012B5E3 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEC8051CD954EA0012B5E3 /* HUDView.swift */; };
 		28F40A711CFB61EB006719C8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F40A701CFB61EB006719C8 /* TabBarController.swift */; };
-		650B229F36904C95355CC002 /* Pods_QBlocker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE2D0BFC44767B8D2FE86C2 /* Pods_QBlocker.framework */; };
+		4C3ECC10887F7F1AE387D879 /* Pods_QBlocker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909AA6A6C2F79E3E2E2D761B /* Pods_QBlocker.framework */; };
 		B1E907CE21AF8B460074B5DB /* CocoaSwiftSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E907CD21AF8B460074B5DB /* CocoaSwiftSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0848F1E9302E687DB76CB90E /* Pods-QBlocker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QBlocker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QBlocker/Pods-QBlocker.debug.xcconfig"; sourceTree = "<group>"; };
-		0FC936E46661C68080474CC2 /* Pods-QBlocker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QBlocker.release.xcconfig"; path = "Pods/Target Support Files/Pods-QBlocker/Pods-QBlocker.release.xcconfig"; sourceTree = "<group>"; };
 		13FA35AB1CF623C400A29767 /* ListMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListMode.swift; sourceTree = "<group>"; };
 		280140141CDA9D5200BC2E78 /* AtLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtLogin.swift; sourceTree = "<group>"; };
 		2832CA321CD688E9001D3373 /* QBlocker 1.4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QBlocker 1.4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,9 +59,11 @@
 		28DEC8031CD950450012B5E3 /* HUDAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDAlert.swift; sourceTree = "<group>"; };
 		28DEC8051CD954EA0012B5E3 /* HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		28F40A701CFB61EB006719C8 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		9AE2D0BFC44767B8D2FE86C2 /* Pods_QBlocker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QBlocker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		909AA6A6C2F79E3E2E2D761B /* Pods_QBlocker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QBlocker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8ED771264213DCBC770EA74 /* Pods-QBlocker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QBlocker.debug.xcconfig"; path = "Target Support Files/Pods-QBlocker/Pods-QBlocker.debug.xcconfig"; sourceTree = "<group>"; };
 		B12B3DD321AEF3AC00BAE6B6 /* QBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QBlocker.entitlements; sourceTree = "<group>"; };
 		B1E907CD21AF8B460074B5DB /* CocoaSwiftSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaSwiftSupport.swift; sourceTree = "<group>"; };
+		C1387E0A3C5DB6E59C8C84A4 /* Pods-QBlocker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QBlocker.release.xcconfig"; path = "Target Support Files/Pods-QBlocker/Pods-QBlocker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				650B229F36904C95355CC002 /* Pods_QBlocker.framework in Frameworks */,
+				4C3ECC10887F7F1AE387D879 /* Pods_QBlocker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,8 +103,8 @@
 			children = (
 				2832CA341CD688E9001D3373 /* QBlocker */,
 				2832CA331CD688E9001D3373 /* Products */,
-				67690C1FE916FDD1AE76C543 /* Pods */,
-				C81D9C17284A4C49E807ED9E /* Frameworks */,
+				E12B8A62E4C711F0198E90AC /* Pods */,
+				D934DDFE7408F978EC669BE0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,21 +169,22 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
-		67690C1FE916FDD1AE76C543 /* Pods */ = {
+		D934DDFE7408F978EC669BE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0848F1E9302E687DB76CB90E /* Pods-QBlocker.debug.xcconfig */,
-				0FC936E46661C68080474CC2 /* Pods-QBlocker.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		C81D9C17284A4C49E807ED9E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9AE2D0BFC44767B8D2FE86C2 /* Pods_QBlocker.framework */,
+				909AA6A6C2F79E3E2E2D761B /* Pods_QBlocker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E12B8A62E4C711F0198E90AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A8ED771264213DCBC770EA74 /* Pods-QBlocker.debug.xcconfig */,
+				C1387E0A3C5DB6E59C8C84A4 /* Pods-QBlocker.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,11 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2832CA411CD688E9001D3373 /* Build configuration list for PBXNativeTarget "QBlocker" */;
 			buildPhases = (
-				845AE1320B9F2B12371D62FC /* [CP] Check Pods Manifest.lock */,
+				B853E36BDAC2AD87B97D463A /* [CP] Check Pods Manifest.lock */,
 				2832CA2E1CD688E9001D3373 /* Sources */,
 				2832CA2F1CD688E9001D3373 /* Frameworks */,
 				2832CA301CD688E9001D3373 /* Resources */,
-				A029F5A304AA443AB8C88A1B /* [CP] Embed Pods Frameworks */,
+				5E1D7237776EA4CCD6B8DC03 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,7 +221,7 @@
 				TargetAttributes = {
 					2832CA311CD688E9001D3373 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = WXS9GV3T26;
+						DevelopmentTeam = Q94QCHTA9L;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
@@ -265,29 +266,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		845AE1320B9F2B12371D62FC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-QBlocker-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A029F5A304AA443AB8C88A1B /* [CP] Embed Pods Frameworks */ = {
+		5E1D7237776EA4CCD6B8DC03 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -307,6 +286,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QBlocker/Pods-QBlocker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B853E36BDAC2AD87B97D463A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QBlocker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -463,15 +464,15 @@
 		};
 		2832CA421CD688E9001D3373 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0848F1E9302E687DB76CB90E /* Pods-QBlocker.debug.xcconfig */;
+			baseConfigurationReference = A8ED771264213DCBC770EA74 /* Pods-QBlocker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WXS9GV3T26;
+				DEVELOPMENT_TEAM = Q94QCHTA9L;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = QBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -486,15 +487,15 @@
 		};
 		2832CA431CD688E9001D3373 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FC936E46661C68080474CC2 /* Pods-QBlocker.release.xcconfig */;
+			baseConfigurationReference = C1387E0A3C5DB6E59C8C84A4 /* Pods-QBlocker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WXS9GV3T26;
+				DEVELOPMENT_TEAM = Q94QCHTA9L;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = QBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
