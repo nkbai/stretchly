@@ -669,11 +669,14 @@ function startLockscreen() {
     const os = require('os')
     if (os.platform() === 'darwin') {
         const spawnSync = require('child_process').spawnSync
-        spawnSync('lockscreen', [], {
+       const result = spawnSync('/usr/local/bin/lockscreen', [], {
             detached: true,
             stdio: 'ignore',
             shell: false,
         })
+        if (result.status !== 0) {
+           alert(`lockscreen died running ${args.join(' ')}: ${result.stderr}`);
+        }
     }
 }
 
