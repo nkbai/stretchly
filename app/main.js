@@ -784,7 +784,8 @@ function startBreak() {
         })
         breakWinLocal.loadURL(modalPath)
         breakWinLocal.setVisibleOnAllWorkspaces(true)
-        breakWinLocal.setAlwaysOnTop(!showBreaksAsRegularWindows, 'pop-up-menu')
+        breakWinLocal.setAlwaysOnTop(!showBreaksAsRegularWindows, 'screen-saver')
+        log.warn("settings ",settings.get("fullscreen"),showBreaksAsRegularWindows)
         if (breakWinLocal) {
             breakWinLocal.on('close', (e) => {
                 if (settings.get('showBreaksAsRegularWindows')) {
@@ -797,23 +798,23 @@ function startBreak() {
                 breakWinLocal = null
             })
         }
-        const win = breakWinLocal
-        win.on('blur', () => {
-            win.hide();
-            win.setKiosk(false);
-            win.moveTop();
-            win.focus();
-            win.setKiosk(true);
-            win.show();
-            win.focus();
-        });
+        // const win = breakWinLocal
+        // win.on('blur', () => {
+        //     win.hide();
+        //     win.setKiosk(false);
+        //     win.moveTop();
+        //     win.focus();
+        //     win.setKiosk(true);
+        //     win.show();
+        //     win.focus();
+        // });
         // win.setAlwaysOnTop(true, "floating");
-        win.setVisibleOnAllWorkspaces(true);
+        // win.setVisibleOnAllWorkspaces(true);
         // win.setFullScreenable(false);
         // win.setVisibleOnAllWorkspaces(true)
         // win.setAlwaysOnTop(true)
 
-        breakWinLocal.setKiosk(true)
+
         breakWins.push(breakWinLocal)
 
         if (!settings.get('allScreens')) {
